@@ -948,6 +948,17 @@ void Menu_Item_Handler(uint8_t menu, uint8_t item, bool draw/*=true*/) {
             thermalManager.setTargetBed(ui.material_preset[3].bed_temp);
           }
           break;
+        case 6: // Preheat 5
+          if (draw) {
+            Draw_Menu_Item(row, ICON_Temperature, (char*)PREHEAT_5_LABEL);
+          } else {
+            if (!bedonly) {
+              thermalManager.setTargetHotend(ui.material_preset[4].hotend_temp, 0);
+              thermalManager.set_fan_speed(0, ui.material_preset[4].fan_speed);
+            }
+            thermalManager.setTargetBed(ui.material_preset[4].bed_temp);
+          }
+          break;
       }
       break;
     case Control:
